@@ -33,6 +33,20 @@ object ArtistSeparator {
             return emptyList()
         }
 
+        // Fast path: skip expensive regex if no separator is found
+        var hasSeparator = false
+        for (separator in SEPARATORS) {
+            if (artistString.contains(separator, ignoreCase = true)) {
+                hasSeparator = true
+                break
+            }
+        }
+
+        if (!hasSeparator) {
+            val trimmed = artistString.trim()
+            return if (trimmed.isNotEmpty()) listOf(trimmed) else emptyList()
+        }
+
         return artistString.split(regex)
             .map { it.trim() }
             .filter { it.isNotEmpty() }
