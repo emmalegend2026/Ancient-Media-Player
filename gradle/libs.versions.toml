@@ -1,4 +1,5 @@
 [versions]
+mockito = "5.11.0"
 #buildscripts dependencies
 advrecyclerview = "1.0.0"
 jetradarmobile_androidSnowfall_version = "1.2.1"
@@ -45,6 +46,9 @@ slidableactivity = "2.1.0"
 
 
 [libraries]
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }
+mockito-inline = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 #dependencies
 #navigation
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation_version" }
