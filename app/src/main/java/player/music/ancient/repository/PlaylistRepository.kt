@@ -138,45 +138,11 @@ class RealPlaylistRepository(
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                songs.add(getPlaylistSongFromCursorImpl(cursor, playlistId))
+                songs.add(PlaylistSongsLoader.getPlaylistSongFromCursorImpl(cursor, playlistId))
             } while (cursor.moveToNext())
         }
         cursor?.close()
         return songs
-    }
-
-    private fun getPlaylistSongFromCursorImpl(cursor: Cursor, playlistId: Long): PlaylistSong {
-        val id = cursor.getLong(Members.AUDIO_ID)
-        val title = cursor.getString(AudioColumns.TITLE)
-        val trackNumber = cursor.getInt(AudioColumns.TRACK)
-        val year = cursor.getInt(AudioColumns.YEAR)
-        val duration = cursor.getLong(AudioColumns.DURATION)
-        val data = cursor.getString(Constants.DATA)
-        val dateModified = cursor.getLong(AudioColumns.DATE_MODIFIED)
-        val albumId = cursor.getLong(AudioColumns.ALBUM_ID)
-        val albumName = cursor.getString(AudioColumns.ALBUM)
-        val artistId = cursor.getLong(AudioColumns.ARTIST_ID)
-        val artistName = cursor.getString(AudioColumns.ARTIST)
-        val idInPlaylist = cursor.getLong(Members._ID)
-        val composer = cursor.getStringOrNull(AudioColumns.COMPOSER)
-        val albumArtist = cursor.getStringOrNull("album_artist")
-        return PlaylistSong(
-            id,
-            title,
-            trackNumber,
-            year,
-            duration,
-            data,
-            dateModified,
-            albumId,
-            albumName,
-            artistId,
-            artistName,
-            playlistId,
-            idInPlaylist,
-            composer ?: "",
-            albumArtist
-        )
     }
 
     private fun makePlaylistCursor(
