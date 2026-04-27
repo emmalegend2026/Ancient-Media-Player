@@ -60,6 +60,7 @@ android {
         }
     }
 
+    testOptions { unitTests.isIncludeAndroidResources = true }
     flavorDimensions += "version"
     productFlavors {
         create("normal") {
@@ -185,6 +186,12 @@ dependencies {
     implementation(libs.dhaval2404.imagepicker)
 
     testImplementation(libs.junit)
+    testImplementation("org.robolectric:robolectric:4.12.1")
+    testImplementation("androidx.test.ext:junit:1.1.5")
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation("androidx.fragment:fragment-testing:1.8.2")
+    debugImplementation("androidx.fragment:fragment-testing:1.8.2")
 }
 
 fun getProperties(fileName: String): Properties? {

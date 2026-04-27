@@ -28,7 +28,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-class WhatsNewFragment : BottomSheetDialogFragment() {
+open class WhatsNewFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentWhatsNewBinding? = null
     val binding get() = _binding!!
 
