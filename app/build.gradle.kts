@@ -185,6 +185,7 @@ dependencies {
     implementation(libs.dhaval2404.imagepicker)
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
 }
 
 fun getProperties(fileName: String): Properties? {

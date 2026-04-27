@@ -124,6 +124,7 @@ androidx-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", ver
 androidx-exoplayer-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version = "1.6.1" }
 androidx-exoplayer-ui = { group = "androidx.media3", name = "media3-ui", version = "1.6.1" }
 junit = { module = "junit:junit", version.ref = "junit_version" }
+mockito-core = { module = "org.mockito:mockito-core", version = "5.11.0" }
 
 
 
