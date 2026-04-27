@@ -185,6 +185,7 @@ dependencies {
     implementation(libs.dhaval2404.imagepicker)
 
     testImplementation(libs.junit)
+    testImplementation("org.robolectric:robolectric:4.11.1")
 }
 
 fun getProperties(fileName: String): Properties? {
