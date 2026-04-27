@@ -112,6 +112,14 @@ class MediaSessionCallback(
                 }
                 musicService.openQueue(songs, songIndex, true)
             }
+            AutoMediaIDHelper.MEDIA_ID_MUSICS_BY_SEARCH -> {
+                songs.addAll(songRepository.songs())
+                var songIndex = MusicUtil.indexOfSongInList(songs, itemId)
+                if (songIndex == -1) {
+                    songIndex = 0
+                }
+                musicService.openQueue(songs, songIndex, true)
+            }
         }
         musicService.play()
     }

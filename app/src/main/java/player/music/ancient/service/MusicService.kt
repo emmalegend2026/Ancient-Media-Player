@@ -121,6 +121,8 @@ import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import player.music.ancient.auto.AutoMediaItem
+import player.music.ancient.repository.SongRepository
 import org.koin.java.KoinJavaComponent.get
 import java.util.Objects
 import java.util.Random
@@ -667,6 +669,33 @@ class MusicService : MediaBrowserServiceCompat(),
             result.sendResult(listOf(storage.recentSong()))
         } else {
             result.sendResult(mMusicProvider.getChildren(parentId, resources))
+        }
+    }
+
+    override fun onSearch(
+        query: String,
+        extras: Bundle?,
+        result: Result<List<MediaBrowserCompat.MediaItem>>,
+    ) {
+        result.detach()
+        serviceScope.launch(IO) {
+            val songRepository = get<SongRepository>(SongRepository::class.java)
+            val songs = if (query.isEmpty()) {
+                songRepository.songs()
+            } else {
+                songRepository.songs(query)
+            }
+
+            val mediaItems = songs.map { song ->
+                AutoMediaItem.with(this@MusicService)
+                    .asPlayable()
+                    .path(AutoMediaIDHelper.MEDIA_ID_MUSICS_BY_SEARCH, song.id)
+                    .title(song.title)
+                    .subTitle(song.artistName)
+                    .icon(MusicUtil.getMediaStoreAlbumCoverUri(song.albumId))
+                    .build()
+            }
+            result.sendResult(mediaItems)
         }
     }
 
