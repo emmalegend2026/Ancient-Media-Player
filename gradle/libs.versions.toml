@@ -37,6 +37,8 @@ google_play_review_version = "2.0.2"
 room_version = "2.7.1"
 core_version = "1.16.0"
 junit_version = "4.13.2"
+robolectric_version = "4.11.1"
+androidx_test_ext_junit_version = "1.1.5"
 
 #plugins
 devTools_ksp_version = "2.3.2"
@@ -124,6 +126,8 @@ androidx-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", ver
 androidx-exoplayer-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version = "1.6.1" }
 androidx-exoplayer-ui = { group = "androidx.media3", name = "media3-ui", version = "1.6.1" }
 junit = { module = "junit:junit", version.ref = "junit_version" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric_version" }
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx_test_ext_junit_version" }
 
 
 
